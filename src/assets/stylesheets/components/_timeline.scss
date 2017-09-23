@@ -1,0 +1,121 @@
+// ------------------------------------------------------------
+// This file contains all styles related to the `timeline` component.
+// ------------------------------------------------------------
+
+@include block('steps-timeline') {
+
+  padding-top: 150px;
+
+  @include respond-to('tablet') {
+    padding-top: 50px;
+    margin-left: 0;
+  }
+
+  @include element('timeline-block') {
+    li {
+      display: inline-block;
+      width: 10%;
+      font-size: 0;
+      position: relative;
+
+      @include respond-to('tablet') {
+        display: block;
+        width: auto;
+      }
+
+      &:before,
+      &:after {
+        content: '';
+        position: relative;
+      }
+
+      &:before {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        @include border-radius(50%);
+        background: $color-white;
+        border: 5px solid $color-rounds;
+        vertical-align: middle;
+        z-index: 1000;
+      }
+      &:after {
+        display: block;
+        top: -21px;
+        left: 10px;
+        border: 2px solid $color-dark;
+        @include respond-to('tablet') {
+          width: 0;
+          height: 30px;
+          top: 0;
+          left: 18px;
+        }
+      }
+      &:last-child {
+        width: 0;
+
+        @include respond-to('tablet') {
+          width: 100%;
+        }
+
+        &:after {
+          border: 0;
+        }
+      }
+      .step-title {
+        display: table;
+        position: absolute;
+        top: 58px;
+        left: -42px;
+        width: 120px;
+        color: $color-black;
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.25rem;
+        text-align: center;
+
+        @include respond-to('tablet') {
+          top: 0;
+          left: 55px;
+          min-height: 38px;
+          max-width: 150px;
+          width: 100%;
+          font-size: 0.875rem;
+          text-align: left;
+        }
+
+        span {
+          display: table-cell;
+          vertical-align: top;
+
+          @include respond-to('tablet') {
+            vertical-align: middle;
+          }
+        }
+      }
+      &:first-child,
+      &:nth-child(2n+3) {
+        .step-title {
+          min-height: 38px;
+          background: none;
+          top: -58px;
+          padding-top: 0px;
+
+          @include respond-to('tablet') {
+            top: 0;
+            left: 55px;
+            text-align: left;
+          }
+
+          span {
+            vertical-align: bottom;
+
+            @include respond-to('tablet') {
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+}

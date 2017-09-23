@@ -1,0 +1,50 @@
+// ------------------------------------------------------------
+// This file contains all project-wide mixins.
+// ------------------------------------------------------------
+
+// BEM - block
+@mixin block($block) {
+  .#{$block} {
+    @content;
+  }
+}
+
+// BEM - element
+@mixin element($element) {
+  $index: str-index('#{&}', '--');
+
+  @if $index {
+    $block: str-slice('#{&}', 1, $index - 1);
+
+    #{$block}__#{$element} {
+      @content;
+    }
+  } @else {
+    &__#{$element} {
+      @content;
+    }
+  }
+}
+
+// BEM - modifier
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+// Responsive breakpoint manager
+// Breakpoints are defined in `variables`.
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
+
+    @media only screen and #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}

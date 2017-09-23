@@ -1,0 +1,24 @@
+// ------------------------------------------------------------
+// This file contains very basic styles.
+// ------------------------------------------------------------
+
+html {
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
+
+// Set up a decent box model and font size on the root element
+:root {
+  box-sizing: border-box;
+  font-size: $font-size;
+}
+
+// Make all elements from the DOM inherit from the root
+// box-sizing value. This will give us the same result,
+// and make it easier to change the box-sizing in plugins
+// or other components that leverage other behavior.
+*, *:after, *:before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}

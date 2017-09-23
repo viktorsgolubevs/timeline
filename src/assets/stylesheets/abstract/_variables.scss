@@ -1,0 +1,19 @@
+// ------------------------------------------------------------
+// This file contains all project-related variables.
+// ------------------------------------------------------------
+
+// Breakpoints
+// Used by `respond-to()` responsive breakpoint manager.
+$breakpoints: (
+  'mobile':  (max-width: 480px),
+  'tablet':  (max-width: 768px),
+);
+// Base font settings
+$font-size: 16px;
+$font-line-height: 1.385rem;
+
+// Colors
+$color-black: #000000;
+$color-dark: #333333;
+$color-white: #ffffff;
+$color-rounds: #d46465;
